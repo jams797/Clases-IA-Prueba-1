@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#142bca">
+<title>Crea tu cuenta | Jose S.A.</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="registro.css">
+<script src="auth.js" defer></script><script src="registro-service.js" defer></script><script src="registro.js" defer></script>
+</head>
+<body>
+<div class="background-art" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<button id="back" class="back-button" aria-label="Volver al inicio de sesión" type="button"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></button>
+<main class="page registration-page">
+<section class="card registration-card" aria-label="Creación de cuenta">
+<noscript><p class="form-error">Activa JavaScript para completar el registro.</p></noscript>
+<p id="storage-error" class="form-error" role="alert" hidden></p>
+<nav class="steps" aria-label="Progreso del registro"><span data-step="data" aria-current="step">1. Datos</span><span data-step="otp">2. Verificación</span><span data-step="password">3. Contraseña</span></nav>
+<section id="step-data" aria-labelledby="data-title">
+<div class="brand"><img src="assets/jose-sa-logo.svg" alt="Jose S.A." width="1190" height="340"></div>
+<header class="intro"><h1 id="data-title" tabindex="-1">Crea tu cuenta</h1><p>Completa tus datos para empezar.</p></header>
+<form id="data-form" novalidate>
+<div class="field"><label for="name">Nombre completo</label><div class="input-wrap"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M4 22v-3a8 8 0 0 1 16 0v3"/></svg><input id="name" name="name" type="text" autocomplete="name" placeholder="Nombres y apellidos" required aria-describedby="name-error"></div><p class="field-error" id="name-error" aria-live="polite"></p></div><div class="field"><label for="email">Correo electrónico</label><div class="input-wrap"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg><input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@correo.com" required aria-describedby="email-error"></div><p class="field-error" id="email-error" aria-live="polite"></p></div>
+<div class="field"><label for="phone">Celular</label><div class="input-wrap phone-wrap"><span class="phone-prefix">+593</span><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="99 123 4567" required aria-describedby="phone-error"></div><p class="field-error" id="phone-error" aria-live="polite"></p></div>
+<div class="field"><label for="address">Dirección</label><div class="input-wrap"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><input id="address" name="address" type="text" autocomplete="street-address" placeholder="Calle, número y ciudad" required aria-describedby="address-error"></div><p class="field-error" id="address-error" aria-live="polite"></p></div>
+<label class="checkbox terms"><input id="terms" type="checkbox" required aria-describedby="terms-error"><span>Acepto los <button type="button" class="text-button" data-policy="terms">Términos y condiciones</button> y la <button type="button" class="text-button" data-policy="privacy">Política de privacidad</button>.</span></label>
+<p class="field-error" id="terms-error" aria-live="polite"></p>
+<button class="button primary" type="submit">Crear cuenta</button></form>
+<aside class="demo-note"><span class="demo-badge">DEMO</span> Usa datos ficticios. La cuenta de prueba dura mientras mantengas abierta esta pestaña.</aside>
+</section>
+<section id="step-otp" aria-labelledby="otp-title" hidden>
+<div class="round-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="m9 10 2 2 4-4M10 18h4"/></svg></div>
+<header class="intro"><h1 id="otp-title" tabindex="-1">Verifica tu número</h1><p>Ingresa el código de 6 dígitos para<br> <strong id="masked-phone"></strong></p></header>
+<form id="otp-form" novalidate>
+<label class="otp-label" for="otp-0">Código de verificación</label>
+<div class="otp-inputs"><input id="otp-0" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" aria-label="Dígito 1 de 6" aria-describedby="otp-error" required><input id="otp-1" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="off" aria-label="Dígito 2 de 6" aria-describedby="otp-error" required><input id="otp-2" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="off" aria-label="Dígito 3 de 6" aria-describedby="otp-error" required><input id="otp-3" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="off" aria-label="Dígito 4 de 6" aria-describedby="otp-error" required><input id="otp-4" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="off" aria-label="Dígito 5 de 6" aria-describedby="otp-error" required><input id="otp-5" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="off" aria-label="Dígito 6 de 6" aria-describedby="otp-error" required></div>
+<p id="otp-error" class="field-error" role="alert"></p>
+<p class="demo-otp"><span class="demo-badge">OTP DE PRUEBA</span> <strong id="demo-code"></strong><br>No se envía SMS en esta demostración.</p>
+<p class="code-time" id="code-time" role="timer" aria-live="off"></p>
+<p class="resend-line">¿No recibiste el código? <button class="text-button" type="button" id="resend">Reenviar</button></p>
+<p id="resend-status" class="sr-only" role="status"></p>
+<button class="button primary" type="submit">Verificar</button>
+</form>
+</section>
+<section id="step-password" aria-labelledby="password-title" hidden>
+<div class="round-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4"/></svg></div>
+<header class="intro"><h1 id="password-title" tabindex="-1">Crea tu contraseña</h1><p>La usarás para ingresar a tu cuenta.</p></header>
+<form id="password-form" novalidate>
+<div class="field"><label for="new-password">Contraseña</label><div class="input-wrap"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4"/></svg><input id="new-password" name="new-password" type="password" autocomplete="new-password" placeholder="Ingresa tu contraseña" required aria-describedby="new-password-error"><button class="icon-button" type="button" data-toggle="new-password" aria-label="Mostrar contraseña" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div><p class="field-error" id="new-password-error" aria-live="polite"></p></div>
+<ul class="password-rules" aria-label="Requisitos de la contraseña"><li data-rule="length">Mínimo 8 caracteres</li><li data-rule="uppercase">Una mayúscula</li><li data-rule="number">Un número</li><li data-rule="symbol">Un símbolo (!@#$)</li></ul>
+<div class="field"><label for="confirm-password">Confirmar contraseña</label><div class="input-wrap"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4"/></svg><input id="confirm-password" name="confirm-password" type="password" autocomplete="new-password" placeholder="Repite tu contraseña" required aria-describedby="confirm-password-error"><button class="icon-button" type="button" data-toggle="confirm-password" aria-label="Mostrar confirmar contraseña" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div><p class="field-error" id="confirm-password-error" aria-live="polite"></p></div>
+<p id="password-form-error" class="form-error" role="alert" hidden></p>
+<button id="save-password" class="button primary" type="submit" disabled>Guardar contraseña</button>
+</form>
+</section>
+</section>
+<footer class="page-footer">
+<p id="data-footer">¿Ya tienes cuenta? <a class="footer-link" href="index.html">Inicia sesión</a></p>
+<div id="otp-footer" hidden><p>¿Número incorrecto? <button class="footer-link" id="edit-data" type="button">Edita tus datos</button></p><p class="registration-security">Nunca compartas este código con nadie</p></div>
+<p id="password-footer" class="registration-security" hidden>No compartas tu contraseña con nadie</p>
+</footer>
+</main>
+<dialog id="policy-dialog" aria-labelledby="policy-title"><div class="dialog-heading"><span class="demo-badge">DEMOSTRACIÓN</span><button id="close-policy" class="close-button" type="button" aria-label="Cerrar">×</button></div><h2 id="policy-title"></h2><p id="policy-description"></p><button id="accept-policy" class="button primary" type="button">Entendido</button></dialog>
+</body>
+</html>

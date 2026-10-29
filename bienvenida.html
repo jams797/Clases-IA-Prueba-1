@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142bca">
+  <title>Bienvenido | Jose S.A.</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="auth.js" defer></script>
+  <script src="bienvenida.js" defer></script>
+</head>
+<body>
+  <div class="background-art" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <main class="page">
+    <section id="session-content" class="card dashboard-card" aria-labelledby="session-title" hidden>
+      <div class="brand"><img src="assets/jose-sa-logo.svg" alt="Jose S.A." width="1190" height="340"></div>
+      <div class="success-mark" aria-hidden="true">✓</div>
+      <header class="intro"><h1 id="session-title">¡Ya estás dentro!</h1><p>Has iniciado sesión correctamente.</p></header>
+      <div class="session-detail"><p>Usuario conectado</p><strong id="session-email"></strong></div>
+      <button id="logout" class="button primary" type="button">Cerrar sesión</button>
+      <p class="demo-note"><span class="demo-badge">DEMO</span> Este es un acceso de prueba. No hay operaciones bancarias reales. La sesión vence en 30 minutos. Las cuentas creadas se conservan únicamente en esta pestaña.</p>
+    </section>
+    <noscript><section class="card">Activa JavaScript para utilizar el inicio de sesión. <a href="index.html">Volver al login</a></section></noscript>
+  </main>
+</body>
+</html>
